@@ -1,0 +1,20 @@
+{
+  "name": "icebox-front",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "window": {
+    "width": 300,
+    "transparent": false,
+    "toolbar": false,
+    "frame": true,
+    "resizable": false,
+    "always-on-top": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nw --disable-gpu --force-cpu-draw"
+  },
+  "author": "",
+  "license": "ISC"
+}
