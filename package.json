@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.html",
   "window": {
-    "width": 300,
+
     "transparent": false,
-    "toolbar": false,
+    "toolbar": true,
     "frame": true,
     "resizable": false,
     "always-on-top": false

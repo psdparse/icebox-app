@@ -7,7 +7,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
+
     }
 
     .box {
@@ -33,20 +33,32 @@
       text-align:center;
       fill: #4cb5e8;
     }
+
+    #holder { border: 10px dashed #ccc; width: 300px; height: 300px; margin: 20px auto;}
+    #holder.hover { border: 10px dashed #333; }
   </style>
 </head>
 <body>
-  <div class="box">
-    <div class="drag-area-deco">
-      <svg class="svg icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-      	 width="100%"  viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-      <path id="zip-13-icon" d="M256,50L67.166,153v208.246L256,462l188.834-100.754V154.123L256,50z M238.833,413.92l-114.399-61.021
-	l72.12-48.08c18.541-12.34-1.141-40.504-21.341-27.025l-73.713,49.12V191.281l137.333,74.902V413.92z M120.946,162.782l117.887-64.3
-	v75.976c0,22.715,34.333,22.724,34.333,0V98.675l118.625,65.415l-135.707,72.405L120.946,162.782z M273.166,266.302L410.5,193.025
-	v133.888l-73.176-48.784c-20.269-13.471-39.883,14.686-21.375,27.023l71.617,47.746l-114.4,61.021V266.302z"/>
-      </svg>
-      Drag & Drop Here.
-    </div>
-  </div>
+  <div id="holder"></div>
+  <script>
+  function $(id){
+    return document.getElementById(id);
+  }
+  // prevent default behavior from changing page on dropped file
+  window.ondragover = function(e) { e.preventDefault(); return false };
+  window.ondrop = function(e) { e.preventDefault(); return false };
+
+  var holder = document.getElementById('holder');
+  holder.ondragover = function () { this.className = 'hover'; return false; };
+  holder.ondragleave = function () { this.className = ''; return false; };
+  holder.ondrop = function (e) {
+    e.preventDefault();
+
+    for (var i = 0; i < e.dataTransfer.files.length; ++i) {
+      console.log(e.dataTransfer.files[i].path);
+    }
+    return false;
+  };
+  </script>
 </body>
 </html>
